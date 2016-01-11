@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chl.web.system.user.dao.UserDao" > 
+	<!-- Result Map-->
+	<resultMap id="ResultMap" type="com.chl.web.system.user.bean.User" >
+		<id column="id" property="id"/>
+		<result column="login_id" property="loginId"/>
+		<result column="name" property="name"/>
+		<result column="password" property="password"/>
+		<result column="gender" property="gender"/>
+		<result column="email" property="email"/>
+		<result column="phone" property="phone"/>
+		<result column="mobile" property="mobile"/>
+		<result column="is_admin" property="isAdmin"/>
+		<result column="state" property="state"/>
+		<result column="assign_flag" property="assignFlag"/>
+		<result column="create_date" property="createDate" />
+		<result column="create_uid" property="createUid" />
+		<result column="update_date" property="updateDate" />
+		<result column="update_uid" property="updateUid" />
+	</resultMap>
+	<!-- 根据登录名称查询 用户信息表 -->
+	<select id="getUser" parameterType="String" resultMap="ResultMap" >
+		Select *
+		from t_user where LOGIN_ID=#{loginId}
+	</select>
+
+	
+</mapper>   
