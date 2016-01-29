@@ -13,6 +13,9 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 http://www.springframework.org/schema/security
 http://www.springframework.org/schema/security/spring-security-3.0.xsd">
     
+    <!-- 启用自动装配 -->
+    <context:annotation-config />
+    
  <bean id="propertyConfigurer"
         class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations"> 
@@ -24,10 +27,9 @@ http://www.springframework.org/schema/security/spring-security-3.0.xsd">
      
      <!-- 扫描 除了@Controller之外的所有类，已完成Bean创建和自动以来注入，包含注解声明-->
     <context:component-scan base-package="com.chl.web">
-        <context:exclude-filter type="annotation"
-            expression="org.springframework.stereotype.Controller" />
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/> 
     </context:component-scan>
-      
+    
     <!-- 数据源 -->
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
         <property name="driverClassName" value="${database.driverClassName}"></property>  
@@ -50,6 +52,5 @@ http://www.springframework.org/schema/security/spring-security-3.0.xsd">
     </bean>
     
         <!-- 启用注解驱动的声明事务支持 -->
-   <!-- 使@Transactional注解生效 -->
-    <tx:annotation-driven transaction-manager="transactionManager" order="2" />
+    <tx:annotation-driven />
 </beans>
