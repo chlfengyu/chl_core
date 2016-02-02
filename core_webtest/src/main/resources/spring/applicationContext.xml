@@ -46,11 +46,14 @@ http://www.springframework.org/schema/security/spring-security-3.0.xsd">
         <property name="dataSource" ref="dataSource" />
     </bean>
     
-        <!-- 扫描mappers并让他们自动装配   （装配*.xml）-->
+        <!-- 扫描DAO接口  -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.chl.web.system.user.dao" />
     </bean>
     
-        <!-- 启用注解驱动的声明事务支持 -->
-    <tx:annotation-driven />
+       <!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->
+    <bean id="transactionManager"
+        class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
 </beans>
