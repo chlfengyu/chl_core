@@ -29,7 +29,7 @@ import com.chl.web.system.user.service.UserService;
 
 /**
  * @author Tera
- *
+ * 
  */
 @Controller
 @RequestMapping(value = "/sys/user/")
@@ -47,7 +47,7 @@ public class UserController {
 
 	/**
 	 * 打开查询列表
-	 *
+	 * 
 	 * @param request
 	 *            request
 	 * @param map
@@ -64,7 +64,7 @@ public class UserController {
 
 	/**
 	 * 打开数据列表
-	 *
+	 * 
 	 * @param request
 	 *            request
 	 * @param map
@@ -84,7 +84,7 @@ public class UserController {
 		pm.init(request, 20, null, user);
 		beanMap.put("rowS", pm.getRowS());
 		beanMap.put("rowE", pm.getRowE());
-		List<User> users = this.userService.getUserPageList(beanMap);
+		List<User> users = userService.getUserPageList(beanMap);
 		pm.setData(users);
 		map.put("pm", pm);
 		return "sys/user/sysUserList";
